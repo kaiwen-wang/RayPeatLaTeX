@@ -1,0 +1,39 @@
+# LaTeX intermediate and output files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.bcf
+*.fls
+*.fdb_latexmk
+*.glo
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+*.acn
+*.acr
+*.alg
+*.glg
+*.gls
+*.ist
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.xdv
+
+article.run.xml
+
+# LaTeX editor backup files
+*~
+*.bak
+*.backup
+*.tmp
+
+# MacOS files
+.DS_Store
