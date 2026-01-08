@@ -32,8 +32,12 @@ article.run.xml
 # LaTeX editor backup files
 *~
 *.bak
+*.bak0
+*.bak1
+*.bak2
 *.backup
 *.tmp
 
 # MacOS files
 .DS_Store
+
