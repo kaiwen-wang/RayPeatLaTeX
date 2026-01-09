@@ -1,0 +1,34 @@
+\ProvidesPackage{style}
+
+% --- 1. Width Narrowing ---
+\usepackage[margin=1in, left=1.5in, right=1.5in]{geometry}
+
+% --- Standard Support ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{setspace}
+\setstretch{1.25}
+\usepackage{indentfirst}
+
+% --- 2. Citation Logic ---
+\usepackage[
+    backend=biber, 
+    style=authoryear,
+    sorting=nyt,
+    maxcitenames=2,
+    url=false,
+    doi=false
+]{biblatex}
+\setlength{\bibitemsep}{0.5\baselineskip}
+
+% --- 3. Section Spacing ---
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+\titlespacing*{\section}{0pt}{3.5ex plus 1ex minus .2ex}{2.3ex plus .2ex}
+\titlespacing*{\subsection}{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% --- Hyperlinks ---
+\usepackage{hyperref}
+\hypersetup{colorlinks=true, allcolors=black}
