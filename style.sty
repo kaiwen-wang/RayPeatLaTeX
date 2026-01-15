@@ -1,14 +1,16 @@
-\ProvidesPackage{style}
+\ProvidesPackage{../style}
+
 
 % --- 1. Width Narrowing ---
 \usepackage[margin=1in, left=1.5in, right=1.5in]{geometry}
 
 % --- Standard Support ---
+\usepackage{xcolor}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{microtype}
 \usepackage{setspace}
-\setstretch{1.25}
+% \setstretch{1.25}
 \usepackage{indentfirst}
 
 % --- 2. Citation Logic ---
@@ -22,6 +24,33 @@
 ]{biblatex}
 \setlength{\bibitemsep}{0.5\baselineskip}
 
+% --- Make entire citation a hyperlink ---
+\DeclareFieldFormat{citehyperref}{%
+  \DeclareFieldAlias{bibhyperref}{noformat}%
+  \bibhyperref{#1}}
+
+\DeclareCiteCommand{\cite}
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \printtext[citehyperref]{\usebibmacro{cite}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\parencite}[\mkbibparens]
+  {\usebibmacro{prenote}}
+  {\usebibmacro{citeindex}%
+   \printtext[citehyperref]{\usebibmacro{cite}}}
+  {\multicitedelim}
+  {\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\textcite}
+  {\boolfalse{cbx:parens}}
+  {\usebibmacro{citeindex}%
+   \printtext[citehyperref]{\usebibmacro{textcite}}}
+  {\ifbool{cbx:parens}{\bibcloseparen\global\boolfalse{cbx:parens}}{}%
+   \multicitedelim}
+  {\usebibmacro{textcite:postnote}}
+
 % --- 3. Section Spacing ---
 \usepackage{titlesec}
 \titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
@@ -31,4 +60,11 @@
 
 % --- Hyperlinks ---
 \usepackage{hyperref}
-\hypersetup{colorlinks=true, allcolors=black}
+\hypersetup{
+  colorlinks=false,
+  urlbordercolor=white
+}
+
+% Add small spacing around URLs so white box doesn't clip adjacent text
+\let\oldurl\url
+\renewcommand{\url}[1]{\hspace{1pt}\oldurl{#1}\hspace{1pt}}
